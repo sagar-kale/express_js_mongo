@@ -39,7 +39,7 @@ export function findUserById(req, res) {
 }
 export function updateUser(req, res) {
     console.log(chalk.magentaBright("under update user api ::: "), req.body);
-    User.findByIdAndUpdate(req.params.id, req.body, { new: true }).exec()
+    User.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then(user => {
             return res.status(200).send(user);
         }).catch(err => {
@@ -51,6 +51,7 @@ export function updateUser(req, res) {
         });
 }
 export function deleteUser(req, res) {
+    console.log(chalk.redBright("deleting user from collection ::: " + req.params.id));
     User.findByIdAndDelete(req.params.id).exec()
         .then(user => {
             return res.status(200).send(user);
