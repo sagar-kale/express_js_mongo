@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import User from '../models/user';
 import chalk from 'chalk';
-
+logg
 export function createUser(req, res) {
     const user = new User({
         _id: mongoose.Types.ObjectId(),

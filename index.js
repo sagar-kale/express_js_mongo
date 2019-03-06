@@ -21,6 +21,7 @@ var corsOptions = {
 }
 db();
 app.use(cors(corsOptions));
+app.use(logger('combined'))
 app.use('/api/', mainRoutes);
 
 app.listen(properties.PORT, (req, res) => {
