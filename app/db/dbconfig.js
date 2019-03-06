@@ -10,24 +10,24 @@ let disconnected = chalk.bold.red;
 let termination = chalk.bold.magenta;
 
 //export this function and imported by server.js
-module.exports =function(){
+module.exports = function () {
 
-    mongoose.connect(dbURL,{ useNewUrlParser: true });
+    mongoose.connect(dbURL, { useNewUrlParser: true, useFindAndModify: false });
 
-    mongoose.connection.on('connected', function(){
+    mongoose.connection.on('connected', function () {
         console.log(connected("Mongoose default connection is open to ", dbURL));
     });
 
-    mongoose.connection.on('error', function(err){
-        console.log(error("Mongoose default connection has occured "+err+" error"));
+    mongoose.connection.on('error', function (err) {
+        console.log(error("Mongoose default connection has occured " + err + " error"));
     });
 
-    mongoose.connection.on('disconnected', function(){
+    mongoose.connection.on('disconnected', function () {
         console.log(disconnected("Mongoose default connection is disconnected"));
     });
 
-    process.on('SIGINT', function(){
-        mongoose.connection.close(function(){
+    process.on('SIGINT', function () {
+        mongoose.connection.close(function () {
             console.log(termination("Mongoose default connection is disconnected due to application termination"));
             process.exit(0)
         });

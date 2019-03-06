@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import User from '../models/user';
+import chalk from 'chalk';
 
 export function createUser(req, res) {
     const user = new User({
@@ -37,6 +38,7 @@ export function findUserById(req, res) {
     });
 }
 export function updateUser(req, res) {
+    console.log(chalk.magentaBright("under update user api ::: "), req.body);
     User.findByIdAndUpdate(req.params.id, req.body, { new: true }).exec()
         .then(user => {
             return res.status(200).send(user);
