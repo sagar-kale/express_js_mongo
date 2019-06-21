@@ -77,7 +77,7 @@ function main() {
     db();
     let handlers = new HandlerGenerator();
     app.post('/login', handlers.login);
-    //app.get('/', , handlers.index);
+    //app.get('/',middleware.checkToken, handlers.index);
     app.use(cors(corsOptions));
     app.use(logger('combined'))
     app.use('/api/', middleware.checkToken, mainRoutes);
