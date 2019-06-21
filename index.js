@@ -17,7 +17,7 @@ class HandlerGenerator {
         let password = req.body.password;
         console.log("username :: ", username);
         console.log("password :: ", password);
-        // For the given username fetch user from DB
+        // For the given username fetch user from Database
         let mockedUsername = 'admin';
         let mockedPassword = 'password';
 
