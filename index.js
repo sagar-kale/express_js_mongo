@@ -4,8 +4,8 @@ import properties from './app/db/properties';
 import mainRoutes from './app/routes/routes.main';
 import logger from 'morgan';
 import jwt from 'jsonwebtoken';
-import config from './app/db/properties'
-import middleware from './app/config/middleware'
+import config from './app/db/properties';
+import middleware from './app/config/middleware';
 
 //let jwt = require('jsonwebtoken');
 //let config = require('./config');
