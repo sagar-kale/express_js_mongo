@@ -5,13 +5,18 @@ mongoose.Promise = global.Promise;
 const userSchema = new mongoose.Schema(
     {
         _id: mongoose.Schema.Types.ObjectId,
-        name: String,
+        fname: String,
+        lname: String,
         city: String,
         age: {
             type: Number,
             default: 0
         },
         email: {
+            type: String,
+            required: true
+        },
+        password: {
             type: String,
             required: true
         },
@@ -36,4 +41,4 @@ const userSchema = new mongoose.Schema(
         timestamps: true
     });
 
-export default mongoose.model('User', userSchema);
+export default mongoose.model('users', userSchema);

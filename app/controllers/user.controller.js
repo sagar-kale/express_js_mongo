@@ -4,8 +4,10 @@ import chalk from 'chalk';
 export function createUser(req, res) {
     const user = new User({
         _id: mongoose.Types.ObjectId(),
-        name: req.body.name,
+        fname: req.body.fname,
+        lname: req.body.lname,
         email: req.body.email,
+        password: req.body.password,
         age: req.body.age,
         city: req.body.city
     });
