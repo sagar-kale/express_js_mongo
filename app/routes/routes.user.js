@@ -3,11 +3,13 @@ import { createUser, findAll, findUserById, deleteUser, updateUser } from '../co
 import { getFakeData } from '../controllers/fake.controller';
 const router = express.Router();
 
-router.post('/user/add', createUser);
-router.get('/user/all', findAll);
-router.get('/user/:id', findUserById);
-router.put('/user/update/:id', updateUser);
-router.delete('/user/delete/:id', deleteUser);
-router.get('/users/all', getFakeData);
+router.post('/add', createUser);
+router.get('/all', findAll);
+router.get('/:id', findUserById);
+router.put('/:id', updateUser);
+router.delete('/delete/:id', deleteUser);
+router.get('/all/fake', getFakeData);
+
+
 
 export default router;

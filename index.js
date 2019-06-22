@@ -1,7 +1,8 @@
 import express from 'express';
 import db from './app/db/dbconfig';
 import properties from './app/db/properties';
-import mainRoutes from './app/routes/routes.main';
+import userRoutes from './app/routes/routes.user';
+import chatRoutes from './app/routes/routes.chats';
 import logger from 'morgan';
 import jwt from 'jsonwebtoken';
 import config from './app/db/properties';
@@ -80,7 +81,8 @@ function main() {
     //app.get('/',middleware.checkToken, handlers.index);
     app.use(cors(corsOptions));
     app.use(logger('combined'))
-    app.use('/api/', middleware.checkToken, mainRoutes);
+    app.use('/api/user', middleware.checkToken, userRoutes);
+    app.use('/api/chat', middleware.checkToken, chatRoutes);
 
     app.listen(properties.PORT, (req, res) => {
         console.log(`Server is running on ${properties.PORT} port.`);
