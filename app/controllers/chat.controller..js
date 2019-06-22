@@ -4,8 +4,7 @@ import chalk from 'chalk';
 export function createChat(req, res) {
     const chat = new Chat({
         _id: mongoose.Types.ObjectId(),
-        fname: req.body.fname,
-        lname: req.body.lname,
+        user: req.body.user,
         content: req.body.content,
     });
     chat.save().then((newChat) => {
@@ -20,7 +19,7 @@ export function createChat(req, res) {
 
 }
 export function findAll(req, res) {
-    chat.find().then(chats => {
+    Chat.find().populate('user').then(chats => {
         return res.status(200).send(chats);
     }).catch(err => {
         res.status(500).json({
@@ -31,9 +30,14 @@ export function findAll(req, res) {
     });
 }
 export function findChatById(req, res) {
-    Chat.findById(req.params.id, function (err, chat) {
-        res.status(200).send(chat);
-    });
+    Chat.findById(req.params.id)
+        .populate('user')
+        .exec(function (err, chat) {
+            if (err) {
+                // handle error here
+            }
+            res.status(200).send(chat);
+        });
 }
 export function updateChat(req, res) {
     console.log(chalk.magentaBright("under update Chat api ::: "), req.body);

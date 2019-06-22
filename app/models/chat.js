@@ -1,12 +1,11 @@
 import mongoose from 'mongoose';
-
+import users from './user'
 mongoose.Promise = global.Promise;
 
 const chatSchema = new mongoose.Schema(
     {
         _id: mongoose.Schema.Types.ObjectId,
-        fname: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
-        lname: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },    
+        user: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
         content: String
     },
     {
